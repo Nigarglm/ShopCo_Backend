@@ -7,6 +7,9 @@ const app = express()
 
 dotenv.config()
 
+app.use('/products', productRoutes);
+
+
 app.use(express.json())
 app.use('/auth', AuthRouter)
 
