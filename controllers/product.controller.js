@@ -27,7 +27,7 @@ export const createProduct = async (request, response) => {
     console.log(request.body)
     try {
         const product = new Product({
-            name: request.body.name,
+            title: request.body.title,
             price: request.body.price,
             category: request.body.category,
             image: request.body.image,
@@ -41,7 +41,7 @@ export const createProduct = async (request, response) => {
         const savedProduct = await product.save();
         response.status(201).send(savedProduct);
     } catch (error) {
-        response.status(500).send({ message: 'An error occurred while creating the product', error: error.message });
+        response.status(400).send({ message: 'An error occurred while creating the product', error: error.message });
     }
 };
 
@@ -53,7 +53,7 @@ export const updateProduct = async (request, response) => {
         }
         response.json(updatedProduct);
     } catch (error) {
-        response.status(500).send({ message: 'An error occurred while updating the product', error: error.message });
+        response.status(400).send({ message: 'An error occurred while updating the product', error: error.message });
     }
 };
 
@@ -71,10 +71,10 @@ export const deleteProduct = async (req, res) => {
 
 export const searchProduct = async (req, res) => {
     try {
-        const { name, category, color, size } = req.query;
+        const { title, category, color, size } = req.query;
         let query = {};
 
-        if (name) query.name = new RegExp(name, 'i');
+        if (title) query.title = new RegExp(title, 'i');
         if (category) query.category = category;
         if (color) query.color = color;
         if (size) query.size = size;
