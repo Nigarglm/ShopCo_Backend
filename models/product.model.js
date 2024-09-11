@@ -34,6 +34,17 @@ const ProductSchema  = mongoose.Schema({
         type: Number,
         required: true,
     },
+    newArrival: {
+        type: Boolean,
+        required: true,
+        default: false,
+    },
+    topSelling: {
+        type: Boolean,
+        required: true,
+        default: false,
+    },
+
    
 })
 
