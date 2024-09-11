@@ -24,20 +24,9 @@ export const getProducts = async (request, response) => {
 };
 
 export const createProduct = async (request, response) => {
-    console.log(request.body)
     try {
-        const product = new Product({
-            title: request.body.title,
-            price: request.body.price,
-            category: request.body.category,
-            image: request.body.image,
-            size: request.body.size,
-            color: request.body.color,
-            description: request.body.description,
-            quantity: request.body.quantity,
-        });
+        const product = new Product(request.body);
         
-
         const savedProduct = await product.save();
         response.status(201).send(savedProduct);
     } catch (error) {
@@ -59,7 +48,7 @@ export const updateProduct = async (request, response) => {
 
 export const deleteProduct = async (req, res) => {
     try {
-        const deletedProduct = await Product.findByIdAndRemove(req.params.id);
+        const deletedProduct = await Product.findByIdAndDelete(req.params.id);
         if (!deletedProduct) {
             return res.status(404).send({ message: 'Product not found' });
         }
