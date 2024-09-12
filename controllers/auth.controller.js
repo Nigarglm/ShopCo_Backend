@@ -2,14 +2,14 @@ import User from '../models/auth.model.js'
 
 export const createUser = async(req,res) =>{
     try {
-        const { userName, email, password } = req.body;
+        const { photo, name, surname, userName, email, password } = req.body;
 
         const existingUser = await User.findOne({ $or: [{ userName }, { email }] });
         if (existingUser) {
             return res.status(400).json({ message: 'User already exists' });
         }
 
-        const user = new User({ userName, email, password });
+        const user = new User({ photo, name, surname,userName, email, password });
         await user.save();
 
         res.status(201).json({ message: 'User created successfully', user });
