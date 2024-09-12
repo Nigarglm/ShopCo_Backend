@@ -2,11 +2,11 @@ import mongoose from "mongoose";
 
 const categorySchema = new mongoose.Schema({
 
-    color:{
+    name:{
         type: String,
         required: true,
     },
-    size:{
+    coverImage:{
         type: Array,
         required: true,
     },
@@ -15,4 +15,6 @@ const categorySchema = new mongoose.Schema({
     
 })
 
-export default  mongoose.model("Category", categorySchema);
+const CategoryModel =  mongoose.model("Category", categorySchema);
+
+export default CategoryModel
