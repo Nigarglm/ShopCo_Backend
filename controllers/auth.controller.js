@@ -1,6 +1,6 @@
 import User from '../models/auth.model.js'
 
-export const createUser = async(req,res) =>{
+export const createUser = async (req,res) =>{
     try {
         console.log("hello")
         const { photo, name, surname, userName, email, password } = req.body;
@@ -19,6 +19,7 @@ export const createUser = async(req,res) =>{
         res.status(500).json({ message: 'Error creating user', error });
     }
 }
+
 
 
 export const getUsers = async(req,res) =>{

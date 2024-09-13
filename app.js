@@ -3,6 +3,8 @@ import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import AuthRouter from './routes/auth.routes.js'
 import productRoutes from './routes/product.routes.js'
+import categoriesRoutes from './routes/category.routes.js'
+import contactRoutes from './routes/contact.routes.js'
 import cors from 'cors'
 
 const app = express()
@@ -17,6 +19,8 @@ app.use(cors({
 
 app.use('/products', productRoutes);
 app.use('/users', AuthRouter)
+app.use('/category', categoriesRoutes)
+app.use ('/contact', contactRoutes )
 
 
 const PORT = process.env.PORT
