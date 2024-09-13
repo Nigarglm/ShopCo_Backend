@@ -19,7 +19,7 @@ app.use(cors())
 app.use('/products', productRoutes);
 app.use('/users', AuthRouter)
 app.use('/category', categoriesRoutes)
-app.use ('contact', contactRoutes )
+app.use ('/contact', contactRoutes )
 
 
 const PORT = process.env.PORT
