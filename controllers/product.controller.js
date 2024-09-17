@@ -92,14 +92,22 @@ export const searchProduct = async (req, res) => {
 };
 
 export const getNewArrival = async (req, res) => {
-    console.log("hello")
     try {
         const products = await Product.find({ newArrival: true });
+
+        if (!products || products.length === 0) {
+            return res.status(404).send({ message: 'No new arrivals found' });
+        }
+
         res.json(products);
     } catch (error) {
-        res.status(500).send({ message: 'An error occurred while fetching new arrivals', error: error.message });
+        res.status(500).send({ 
+            message: 'An error occurred while fetching new arrivals', 
+            error: error.message 
+        });
     }
 };
+
 
 export const getTopSelling = async (req, res) => {
     console.log(req)
