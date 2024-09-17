@@ -22,6 +22,7 @@ export const getCategoryById = async (req, res) => {
 }
 
 export const createCategory = async (req, res) => {
+    console.log(req.body,"create")
     try {
         const category = new Category(req.body);
         await category.save();
