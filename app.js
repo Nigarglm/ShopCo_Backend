@@ -7,6 +7,8 @@ import categoriesRoutes from './routes/category.routes.js'
 import contactRoutes from './routes/contact.routes.js'
 import commonPageRoutes from './routes/commonPage.routes.js'
 import faqRoutes from './routes/faq.routes.js'
+import getNewArrivalRoutes from './routes/newArrival.routes.js' 
+import getTopSelling from './routes/topSelling.routes.js'
 import cors from 'cors'
 
 const app = express()
@@ -25,6 +27,11 @@ app.use('/category', categoriesRoutes)
 app.use ('/contact', contactRoutes )
 app.use('/common', commonPageRoutes)
 app.use('/faq', faqRoutes)
+app.use('/productsGetNewArrival', getNewArrivalRoutes)
+app.use('/productsGetTopSelling', getTopSelling)
+
+
+
 
 
 const PORT = process.env.PORT
